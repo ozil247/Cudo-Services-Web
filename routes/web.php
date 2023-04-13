@@ -30,8 +30,8 @@ Route::post('/reset_password', 'Auth\ForgotPasswordController@forgotPassword')->
 
 
 
-
-Auth::routes(['verify' => true]);
+// type this below "'verify' => true"
+Auth::routes([]);
 
 
 Route::middleware(['auth'])->group(function () {

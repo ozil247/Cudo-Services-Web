@@ -17,3 +17,17 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::post('/register', 'AuthController@register')->name('register');
+
+Route::post('/login', 'AuthController@login')->name('login');
+
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+
+    Route::get('/profile', 'AuthProfileController@authProfile')->name('auth.profile');
+    Route::post('/update-profile', 'AuthProfileController@updateProfile')->name('update.profile');
+
+    Route::post('/logout', 'AuthController@logout')->name('logout');
+});
